@@ -9,13 +9,14 @@ class Message
     m['type'] = if @type then @type else 'message'
     m['channel'] = @channel
     m['text'] = @text # TODO: Good place to do escaping, etc
+    m['attachments'] = @attachments
 
     return m
 
   getBody: ->
     txt = ""
     if @text then txt += @text
-    
+
     if @attachments
       if @text then txt += "\n"
       for k, attach of @attachments
@@ -30,7 +31,7 @@ class Message
 
     str = ""
     # TODO: Date
-    
+
     channel = @_client.getChannelGroupOrDMByID @channel
     if channel then str += channel.name + ' > '
 
@@ -43,7 +44,7 @@ class Message
         str += ' (bot): '
       else
         str += ': '
-    
+
     # TODO: bots here
 
     body = @getBody()

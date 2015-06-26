@@ -154,7 +154,7 @@ class Client extends EventEmitter
       @_pongTimeout = null
 
     @authenticated = false
-    
+
     # Test for a null value on ws to prevent system failure (e.g. if Bot is disabled)
     if @ws
       @ws.close()
@@ -488,7 +488,7 @@ class Client extends EventEmitter
 
       when 'star_added'
           @emit 'star_added', message
-      
+
       when 'star_removed'
           @emit 'star_removed', message
 
@@ -536,7 +536,7 @@ class Client extends EventEmitter
 
     post_data = querystring.stringify(params)
 
-    options = 
+    options =
       hostname: @host,
       method: 'POST',
       path: '/api/' + method,

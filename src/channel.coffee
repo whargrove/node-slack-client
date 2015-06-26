@@ -82,8 +82,8 @@ class Channel
     for k of @_typing
       k
 
-  send: (text) ->
-    m = new Message @_client, {text: text}
+  send: (text, attachments) ->
+    m = new Message @_client, { text: text, attachments: attachments }
     @sendMessage m
 
   postMessage: (data) ->
